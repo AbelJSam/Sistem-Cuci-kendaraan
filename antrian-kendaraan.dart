@@ -28,6 +28,7 @@ void main() {
     print("4. Selesaikan posisi");
     print("5. Exit");
     print("====================================");
+    print("====================================");
 
     stdout.write("Pilih menu: ");
 
@@ -43,8 +44,16 @@ void main() {
         stdout.write("Masukkan plat nomor: ");
         String plat = stdin.readLineSync() ?? "";
 
-        if (plat.isEmpty) {
-          print("\nPlat nomor tidak boleh kosong.");
+          RegExp formatPlat = RegExp(
+          r'^[A-Za-z]{1,2} [0-9]{1,4}( [A-Za-z]{1,3})?$'
+        );
+
+        // if (plat.isEmpty) {
+        //   print("\nPlat nomor tidak boleh kosong.");
+        // }
+        if (!formatPlat.hasMatch(plat)) {
+          print("\n ERROR : Format plat tidak valid!");
+          print("Contoh: KB 1000 AA, B 1234 CD, atau KB 1234");
         }
 
         // Jika Pos 1 kosong
@@ -79,9 +88,13 @@ void main() {
         }
 
         // Jika semua Pos penuh
-        else {
+        // else {
+        //   waitingList.add({
+        //     "Plat": plat
+        //   });
+         else {
           waitingList.add({
-            "Plat": plat
+            "Plat": plat.toUpperCase()
           });
 
           print("\nSemua Pos sedang penuh.");
