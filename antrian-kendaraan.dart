@@ -28,7 +28,6 @@ void main() {
     print("4. Selesaikan posisi");
     print("5. Exit");
     print("====================================");
-    print("====================================");
 
     stdout.write("Pilih menu: ");
 
